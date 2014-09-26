@@ -1,0 +1,38 @@
+from scipy import misc
+#lena = misc.imread('lena.png')
+lena = misc.lena()
+
+import matplotlib.cm as cm # colormap
+import matplotlib.pyplot as PlotImage
+
+PlotImage.imshow(lena, cmap=cm.Greys_r)
+#PlotImage.imshow(lena)
+PlotImage.show()
+
+from scipy import ndimage
+#Gray level variance filters STA3
+#gradientX = ndimage.morphological_gradient(lena, size=3, mode='constant') #all around
+#gradientX = ndimage.morphological_gradient(lena, size=(1,3), mode='constant') #x-axis
+#gradientY = ndimage.morphological_gradient(lena, size=(3,1), mode='constant') #y-axis
+
+#Laplacian Filters
+#gradientX = ndimage.laplace(lena, mode='constant')
+#gradientX = ndimage.gaussian_laplace(lena, sigma=1, mode='constant') #Sigma of 1 works best
+
+#GRA1 filters
+#gradientX = ndimage.gaussian_gradient_magnitude(lena, sigma=1, mode='constant')
+#gradientX = ndimage.gaussian_filter(lena, sigma=.5, order=1, mode='constant') #order 1 works best for gaussian derivative GRA1
+
+#Sobel Filter
+#gradientX = ndimage.sobel(lena, axis=0, mode='constant') # find the y deriviative
+
+PlotImage.imshow(gradientX, cmap=cm.Greys_r)
+#PlotImage.imshow(gradientX)
+PlotImage.show()
+
+#gradientY = ndimage.gaussian_filter(lena, axis=1, mode='constant')
+#gradientY = ndimage.sobel(lena, axis=1, mode='constant') # find the x deriviative
+PlotImage.imshow(gradientY, cmap=cm.Greys_r)
+PlotImage.show()
+
+#misc.imsave('lena.png',lena)
